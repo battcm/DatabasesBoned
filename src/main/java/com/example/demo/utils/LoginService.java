@@ -22,7 +22,7 @@ public class LoginService {
 
 public LoginService(){
         try {
-            application.load(new FileInputStream("C:\\Users\\olingejj\\CSSE333\\demo\\src\\main\\resources\\application.properties"));
+            application.load(new FileInputStream("src/main/resources/application.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
