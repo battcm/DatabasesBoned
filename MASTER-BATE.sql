@@ -30,7 +30,8 @@ CREATE TABLE Ingredients(ID int IDENTITY(0,1) PRIMARY KEY,IngreName varchar(63),
 CREATE TABLE Orders (RestName varchar(63) FOREIGN KEY REFERENCES Restaurant(RestName),
 IngrediantID int FOREIGN KEY REFERENCES Ingredients(ID),
 DrinkID int FOREIGN KEY REFERENCES Drink(ID),
-Supplier varchar(255),DateRecieved Date,Quantity int, StorageType varchar(255), PRIMARY KEY(RestName,IngrediantID,DrinkID));
+Supplier varchar(255),DateRecieved Date,
+Quantity int, StorageType varchar(255), PRIMARY KEY(RestName,IngrediantID,DrinkID));
 CREATE TABLE CanStoreWith(IngredientAID int FOREIGN KEY REFERENCES Ingredients(ID),IngredientBID int FOREIGN KEY REFERENCES Ingredients(ID));
 Create Table FoodItems(
 	ID int identity(0,1)Primary Key,
