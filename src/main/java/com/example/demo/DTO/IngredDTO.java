@@ -19,21 +19,21 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="UserTable")
-public class LoginDTO {
-    @JsonProperty("username")
+@Table(name="Ingrediant")
+public class IngredDTO {
+    @JsonProperty("id")
     @NonNull
     @Id
-    @Column(name ="UserName")
-    private String username;
+    @Column(name ="IngredientID")
+    private int id;
 
-    @JsonProperty("passwordHash")
+    @JsonProperty("name")
     @NonNull
-    @Column(name ="passwordHash")
-    private String passwordHash;
+    @Column(name ="IngreName")
+    private String name;
 
-    @JsonProperty("passwordSalt")
+    @JsonProperty("type")
     @NonNull
-    @Column(name ="passwordSalt")
-    private String passwordSalt;
-}
+    @Column(name ="IngreType")
+    private String type;}
+

@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Date;
+import java.sql.Time;
 
 @Data
 @Entity
@@ -19,21 +21,27 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="UserTable")
-public class LoginDTO {
-    @JsonProperty("username")
+@Table(name="Schedule")
+public class ScheduleDTO {
+    @JsonProperty("id")
     @NonNull
     @Id
-    @Column(name ="UserName")
-    private String username;
+    @Column(name ="id")
+    private int id;
 
-    @JsonProperty("passwordHash")
+    @JsonProperty("day")
     @NonNull
-    @Column(name ="passwordHash")
-    private String passwordHash;
+    @Id
+    @Column(name ="day")
+    private String day;
 
-    @JsonProperty("passwordSalt")
+    @JsonProperty("open")
     @NonNull
-    @Column(name ="passwordSalt")
-    private String passwordSalt;
+    @Column(name ="open")
+    private Time open;
+
+    @JsonProperty("close")
+    @NonNull
+    @Column(name ="close")
+    private Time close;
 }
