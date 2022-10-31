@@ -35,7 +35,7 @@ public class ResService {
         return preparedStatement.execute();
     }
     public boolean update(ResDTOCOM resDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @name='?', @addr='?', @id='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @name=?, @addr=?, @id=?");
         preparedStatement.setString(1,resDTO.getName());
         preparedStatement.setString(2,resDTO.getAddr());
         preparedStatement.setInt(3,resDTO.getId());

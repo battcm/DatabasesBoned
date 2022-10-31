@@ -36,7 +36,7 @@ public class IsInService {
         return preparedStatement.execute();
     }
     public boolean delete(IsInDTOCOM isInDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteIsIn @FoodID='?', @IngredientID='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteIsIn @FoodID=?, @IngredientID=?");
         preparedStatement.setInt(1,isInDTO.getFoodId());
         preparedStatement.setInt(2,isInDTO.getIngreId());
         return preparedStatement.execute();

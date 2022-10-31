@@ -37,10 +37,10 @@ public class SellService {
         return preparedStatement.execute();
     }
     public boolean update(SellsDTOCOM sellsDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec UpdateSells @RestID='?', @FoodID='?', @Mealtype='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec UpdateSells @RestID=?, @FoodID=?, @Mealtype=?");
         preparedStatement.setInt(1,sellsDTO.getResId());
         preparedStatement.setInt(2,sellsDTO.getFoodId());
-        preparedStatement.setString(2,sellsDTO.getMealType());
+        preparedStatement.setString(3,sellsDTO.getMealType());
         return preparedStatement.execute();
     }
 

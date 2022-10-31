@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.*;
+import com.example.demo.DTOHAV.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,7 @@ public class APIController {
     private WorkService workService;
     @PostMapping("/test/user")
     public ResponseEntity<Boolean> testUser(@RequestBody LoginDTO queryRequest){
+        System.out.println(queryRequest.getUsername());
     if(loginService.login(queryRequest.getUsername(), queryRequest.getPassword())){
         return new ResponseEntity<>(true,HttpStatus.OK);
     }else{
@@ -183,6 +185,94 @@ public class APIController {
     public ResponseEntity<Boolean> insertWork(@RequestBody WorkDTO resDTO){
         try {
             workService.insert(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/drink")
+    public ResponseEntity<Boolean> updateDrink(@RequestBody DrinkDTOCOM drinkDTOCOMDTO){
+        try {
+            drinkService.update(drinkDTOCOMDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/food")
+    public ResponseEntity<Boolean> updateFood(@RequestBody FoodDTOCOM foodDTOCOM){
+        try {
+            foodService.update(foodDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/ingred")
+    public ResponseEntity<Boolean> updateIngred(@RequestBody IngredDTOCOM ingredDTOCOM){
+        try {
+            ingredService.update(ingredDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/order")
+    public ResponseEntity<Boolean> updateOrder(@RequestBody OrderDTOCOM orderDTOCOM){
+        try {
+            orderService.update(orderDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/res")
+    public ResponseEntity<Boolean> updateRes(@RequestBody ResDTOCOM resDTOCOM){
+        try {
+            resService.update(resDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/schedule")
+    public ResponseEntity<Boolean> updateSchedule(@RequestBody ScheduleDTOCOM scheduleDTOCOM){
+        try {
+            scheduleService.update(scheduleDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/sell")
+    public ResponseEntity<Boolean> updateSell(@RequestBody SellsDTOCOM sellsDTOCOM){
+        try {
+            sellService.update(sellsDTOCOM);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+
+    @PostMapping("/update/worksfor")
+    public ResponseEntity<Boolean> updateWorksFor(@RequestBody WorkDTO workDTO){
+        try {
+            workService.update(workDTO);
             return new ResponseEntity<>(true,HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();

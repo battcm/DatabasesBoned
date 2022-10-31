@@ -33,12 +33,6 @@ public class SellsDTOCOM {
     @Column(name ="foodId")
     private int foodId;
 
-    @JsonProperty("ingreId")
-    @NonNull
-    @Id
-    @Column(name ="ingreId")
-    private int ingreId;
-
     @JsonProperty("mealType")
     @NonNull
     @Id

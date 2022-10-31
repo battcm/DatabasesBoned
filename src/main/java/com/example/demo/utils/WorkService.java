@@ -36,5 +36,13 @@ public class WorkService {
         preparedStatement.setString(3,""+resDTO.getPerm());
         return preparedStatement.execute();
     }
+
+    public boolean update(WorkDTO resDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateWorksFor @username=?, @restid=?, @perm=?");
+        preparedStatement.setString(1,resDTO.getUser());
+        preparedStatement.setInt(2,resDTO.getRestId());
+        preparedStatement.setString(3,""+resDTO.getPerm());
+        return preparedStatement.execute();
+    }
 }
 

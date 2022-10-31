@@ -37,11 +37,12 @@ public class ScheduleService {
     }
 
     public boolean update(ScheduleDTOCOM scheduleDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateSchedule @restId='?', @dayname='?',@Open='?',@Close='?'");
+        System.out.println(scheduleDTO.getOpen());
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateSchedule @restId=?, @dayname=?,@Open=?,@Close=?");
         preparedStatement.setInt(1,scheduleDTO.getId());
         preparedStatement.setString(2,scheduleDTO.getDay());
-        preparedStatement.setTime(3,scheduleDTO.getOpen());
-        preparedStatement.setTime(4,scheduleDTO.getClose());
+        preparedStatement.setString(3,scheduleDTO.getOpen());
+        preparedStatement.setString(4,scheduleDTO.getClose());
         return preparedStatement.execute();
     }
 

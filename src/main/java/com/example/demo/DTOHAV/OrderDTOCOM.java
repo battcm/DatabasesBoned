@@ -23,19 +23,19 @@ import java.sql.Time;
 @Builder
 @Table(name="Schedule")
 public class OrderDTOCOM {
-    @JsonProperty("resid")
+    @JsonProperty("resId")
     @NonNull
     @Id
     @Column(name ="resId")
     private int resId;
 
-    @JsonProperty("ingreid")
+    @JsonProperty("ingreId")
     @NonNull
     @Id
     @Column(name ="ingreId")
     private int ingreId;
 
-    @JsonProperty("drinkid")
+    @JsonProperty("drinkId")
     @NonNull
     @Id
     @Column(name ="drinkId")

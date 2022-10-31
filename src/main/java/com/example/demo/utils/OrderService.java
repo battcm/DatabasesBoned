@@ -42,19 +42,20 @@ public class OrderService {
 
     }
     public boolean update(OrderDTOCOM orderDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateOrder @restId='?', @IngrediantID='?',@drinkId='?',@date='?',@quant='?',@Type='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateOrder @restId=?, @IngrediantID=?,@drinkId=?,@date=?,@quant=?,@Type=?");
         preparedStatement.setInt(1,orderDTO.getResId());
         preparedStatement.setInt(2,orderDTO.getIngreId());
         preparedStatement.setInt(3,orderDTO.getDrinkId());
         preparedStatement.setDate(4,orderDTO.getDate());
         preparedStatement.setInt(5,orderDTO.getQuantity());
         preparedStatement.setString(6,orderDTO.getType());
+        System.out.println(preparedStatement);
 
         return preparedStatement.execute();
     }
 
     public boolean delete(OrderDTOCOM orderDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId='?', @IngrediantID='?',@drinkId=?");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId=?, @IngrediantID=?,@drinkId=?");
         preparedStatement.setInt(1,orderDTO.getResId());
         preparedStatement.setInt(2,orderDTO.getIngreId());
         preparedStatement.setInt(3,orderDTO.getDrinkId());

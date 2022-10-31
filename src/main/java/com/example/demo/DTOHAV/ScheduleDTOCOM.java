@@ -38,10 +38,10 @@ public class ScheduleDTOCOM {
     @JsonProperty("open")
     @NonNull
     @Column(name ="open")
-    private Time open;
+    private String open;
 
     @JsonProperty("close")
     @NonNull
     @Column(name ="close")
-    private Time close;
+    private String close;
 }

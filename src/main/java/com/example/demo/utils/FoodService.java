@@ -36,7 +36,7 @@ public class FoodService {
         return preparedStatement.execute();
     }
     public boolean update(FoodDTOCOM foodDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_foodItem @FoodItemID='?', @Name='?', @Calories=?");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_foodItem @FoodItemID=?, @Name=?, @Calories=?");
         preparedStatement.setInt(1,Integer.valueOf(foodDTO.getId()));
         preparedStatement.setString(2,foodDTO.getName());
         preparedStatement.setInt(3,foodDTO.getCal());
@@ -44,7 +44,7 @@ public class FoodService {
     }
 
     public boolean delete(FoodDTOCOM foodDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_foodItem @FoodItemID='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_foodItem @FoodItemID=?");
         preparedStatement.setInt(1,Integer.valueOf(foodDTO.getId()));
         return preparedStatement.execute();
     }

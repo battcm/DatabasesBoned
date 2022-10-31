@@ -40,7 +40,7 @@ public class DrinkDTOCOM {
     @JsonProperty("price")
     @NonNull
     @Column(name ="price")
-    private String price;
+    private float price;
 }
 
 
