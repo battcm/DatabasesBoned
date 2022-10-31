@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTO.SellDTO;
 import com.example.demo.DTOHAV.SellsDTOCOM;
+import com.example.demo.DTOHAV.SellsKeyDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -44,10 +45,10 @@ public class SellService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(SellsDTOCOM sellsDTO) throws SQLException {
+    public boolean delete(SellsKeyDTO sellsDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteSells @RestID='?', @FoodID='?'");
         preparedStatement.setInt(1,sellsDTO.getResId());
-        preparedStatement.setInt(2,sellsDTO.getFoodId());
+        preparedStatement.setInt(2,sellsDTO.getFoodid());
         return preparedStatement.execute();
     }
 }
