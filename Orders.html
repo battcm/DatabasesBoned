@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Orders</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Orders</a>
+  </nav>
+  <div id="mainPage" class="container page-container">
+    <div id="mainPage" class="container page-container">
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputResId" class="bmd-label-floating">Restraunt ID</label>
+        <input type="email" class="form-control" id="inputResId" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputFoodId" class="bmd-label-floating">Food ID</label>
+        <input type="email" class="form-control" id="inputFoodId" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputDrinkId" class="bmd-label-floating">Drink ID</label>
+        <input type="email" class="form-control" id="inputDrinkId" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputDate" class="bmd-label-floating">Date</label>
+        <input type="email" class="form-control" id="inputDate" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputQuan" class="bmd-label-floating">Quantity</label>
+        <input type="email" class="form-control" id="inputQuan" name ="Day">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="inputStor" class="bmd-label-floating">Type</label>
+        <input type="email" class="form-control" id="inputStor" name ="password">
+      </div>
+      <button id="Submit" type="button" class="btn btn-primary btn-outline">Submit</button>
+      <hr>
+
+
+
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="deleteResId" class="bmd-label-floating">Restraunt ID</label>
+        <input type="email" class="form-control" id="deleteResId" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="deleteFoodId" class="bmd-label-floating">Food ID</label>
+        <input type="email" class="form-control" id="deleteFoodId" name="email">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="deleteDrinkId" class="bmd-label-floating">Drink ID</label>
+        <input type="email" class="form-control" id="deleteDrinkId" name="email">
+      </div>
+      <button id="Delete" type="button" class="btn btn-primary btn-outline">Delete</button>
+      <hr>
+
+
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateResId" class="bmd-label-floating">Restraunt ID</label>
+        <input type="email" class="form-control" id="updateResId">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateFoodId" class="bmd-label-floating">Food ID</label>
+        <input type="email" class="form-control" id="updateFoodId">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateDrinkId" class="bmd-label-floating">Drink ID</label>
+        <input type="email" class="form-control" id="updateDrinkId">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateDate" class="bmd-label-floating">Date</label>
+        <input type="email" class="form-control" id="updateDate">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateQuan" class="bmd-label-floating">Quantity</label>
+        <input type="email" class="form-control" id="updateQuan">
+      </div>
+      <div class="form-group bmd-form-group" form action="login.php" method="post">
+        <label for="updateType" class="bmd-label-floating">Type</label>
+        <input type="email" class="form-control" id="updateType"  >
+      </div>
+      <button id="Update" type="button" class="btn btn-primary btn-outline">Update</button>
+      <hr>
+  </div>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/ord.js"></script>
+</body>
+
+</html>

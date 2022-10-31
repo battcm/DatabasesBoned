@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Drink</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Drink</a>
+  </nav>
+  <div id="mainPage" class="container page-container">
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="inputName" class="bmd-label-floating">Name</label>
+      <input type="email" class="form-control" id="inputName" name="email">
+    </div>
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="inputBrand" class="bmd-label-floating">Brand</label>
+      <input type="email" class="form-control" id="inputBrand" name ="password">
+    </div>
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="inputPrice" class="bmd-label-floating">Price</label>
+      <input type="email" class="form-control" id="inputPrice" name ="password">
+    </div>
+    <button id="Submit" type="button" class="btn btn-primary btn-outline">Submit</button>
+    <hr>
+
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="inputName" class="bmd-label-floating">DrinkId</label>
+      <input type="email" class="form-control" id="inputName" name="email">
+    </div>
+  
+    <button id="Delete" type="button" class="btn btn-primary btn-outline">Delete</button>
+    <hr>
+
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="updateID" class="bmd-label-floating">ID</label>
+      <input type="ID" class="form-control" id="updateID">
+    </div>
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="updateName" class="bmd-label-floating">Name</label>
+      <input type="Name" class="form-control" id="updateName">
+    </div>
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="updateBrand" class="bmd-label-floating">Brand</label>
+      <input type="Brand" class="form-control" id="updateBrand">
+    </div>
+    <div class="form-group bmd-form-group" form action="login.php" method="post">
+      <label for="updatePrice" class="bmd-label-floating">Price</label>
+      <input type="Price" class="form-control" id="updatePrice">
+    </div>
+    <button id="Update" type="button" class="btn btn-primary btn-outline">Update</button>
+    <hr>
+
+  </div>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/dri.js"></script>
+</body>
+
+</html>
