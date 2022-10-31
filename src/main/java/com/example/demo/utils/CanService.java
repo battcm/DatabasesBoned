@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.CanDTO;
+import com.example.demo.DTO.CanIdDTO;
 import com.example.demo.DTO.IsInDTO;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTOHAV.CanStoreWithDTOCOM;
@@ -36,8 +37,8 @@ public class CanService {
         preparedStatement.setInt(2,resDTO.getIngredB());
         return preparedStatement.execute();
     }
-    public boolean delete(CanStoreWithDTOCOM canStoreWithDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_canStoreWith @IngredientAID='?', @IngredientBID='?'");
+    public boolean delete(CanIdDTO canStoreWithDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_canStoreWith @IngredientAID=?, @IngredientBID=?");
         preparedStatement.setInt(1,canStoreWithDTO.getIngreAId());
         preparedStatement.setInt(2,canStoreWithDTO.getIngreBId());
         return preparedStatement.execute();

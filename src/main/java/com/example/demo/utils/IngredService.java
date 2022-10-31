@@ -1,8 +1,8 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.IngredDTO;
-import com.example.demo.DTO.ResDTO;
-import com.example.demo.DTOHAV.FoodDTOCOM;
+import com.example.demo.DTO.DrinkIdDTO;
+import com.example.demo.DTO.IngredIdDTO;
 import com.example.demo.DTOHAV.IngredDTOCOM;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +35,16 @@ public class IngredService {
     }
 
     public boolean update(IngredDTOCOM ingredDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_ingre @IngreId='?' @IngreName='?', @IngreType='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_ingre @IngreId=? @IngreName='?', @IngreType='?'");
         preparedStatement.setInt(1,ingredDTO.getId());
         preparedStatement.setString(2,ingredDTO.getName());
         preparedStatement.setString(3,ingredDTO.getType());
         return preparedStatement.execute();
     }
-    public boolean delete(IngredDTOCOM ingredDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId='?' @IngreName='?', @IngreType='?'");
-        preparedStatement.setInt(1,ingredDTO.getId());
+    public boolean delete(IngredIdDTO ingredDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId=?");
+        System.out.println(ingredDTO.getIngreId());
+        preparedStatement.setInt(1,ingredDTO.getIngreId());
         return preparedStatement.execute();
     }
 }

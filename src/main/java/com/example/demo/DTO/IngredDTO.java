@@ -24,11 +24,17 @@ public class IngredDTO {
     @JsonProperty("name")
     @NonNull
     @Id
-    @Column(name ="UserName")
+    @Column(name = "UserName")
     private String name;
 
     @JsonProperty("type")
     @NonNull
-    @Column(name ="Password")
-    private String type;}
+    @Column(name = "Password")
+    private String type;
+
+    @JsonProperty("id")
+    @NonNull
+    @Column(name = "Password")
+    private int id;
+}
 

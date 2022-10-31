@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@ToString(doNotUseGetters = true)
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

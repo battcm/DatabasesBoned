@@ -12,23 +12,21 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@ToString(doNotUseGetters = true)
+@ToString()
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties()
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="Restraunt")
+@Table()
 public class ResDTO {
     @JsonProperty("name")
     @NonNull
     @Id
-    @Column(name ="UserName")
     private String name;
 
     @JsonProperty("addr")
     @NonNull
-    @Column(name ="Password")
     private String addr;}
 

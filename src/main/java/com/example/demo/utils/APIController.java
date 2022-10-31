@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController("com.example.demo.utils.APIController")
 @CrossOrigin(origins = "http://localhost:5000")
@@ -160,7 +159,7 @@ public class APIController {
         }
     }
     @PostMapping("/insert/can")
-    public ResponseEntity<Boolean> insertIsa(@RequestBody CanDTO resDTO){
+    public ResponseEntity<Boolean> insertCan(@RequestBody CanDTO resDTO){
         try {
             canService.insert(resDTO);
             return new ResponseEntity<>(true,HttpStatus.OK);
@@ -170,7 +169,7 @@ public class APIController {
         }
     }
     @PostMapping("/insert/sell")
-    public ResponseEntity<Boolean> inserSell(@RequestBody SellDTO resDTO){
+    public ResponseEntity<Boolean> insertSell(@RequestBody SellDTO resDTO){
         try {
             sellService.insert(resDTO);
             return new ResponseEntity<>(true,HttpStatus.OK);
@@ -183,6 +182,106 @@ public class APIController {
     public ResponseEntity<Boolean> insertWork(@RequestBody WorkDTO resDTO){
         try {
             workService.insert(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/res")
+    public ResponseEntity<Boolean> deleteRes(@RequestBody ResIdDTO resDTO){
+        try {
+            resService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/drink")
+    public ResponseEntity<Boolean> deleteDrink(@RequestBody DrinkIdDTO resDTO){
+        try {
+            drinkService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/schedule")
+    public ResponseEntity<Boolean> deleteSche(@RequestBody ScheduleIdDTO resDTO){
+        try {
+            scheduleService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/ingred")
+    public ResponseEntity<Boolean> deleteIngred(@RequestBody IngredIdDTO resDTO){
+        try {
+            ingredService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/food")
+    public ResponseEntity<Boolean> deleteFood(@RequestBody FoodIdDTO resDTO){
+        try {
+            foodService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/order")
+    public ResponseEntity<Boolean> deleteOrder(@RequestBody OrderIdDTO resDTO){
+        try {
+            orderService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/isa")
+    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInIdDTO resDTO){
+        try {
+            isInService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/can")
+    public ResponseEntity<Boolean> deleteCan(@RequestBody CanIdDTO resDTO){
+        try {
+            canService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/sell")
+    public ResponseEntity<Boolean> deleteSell(@RequestBody SellIdDTO resDTO){
+        try {
+            sellService.delete(resDTO);
+            return new ResponseEntity<>(true,HttpStatus.OK);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        }
+    }
+    @PostMapping("/delete/work")
+    public ResponseEntity<Boolean> deleteWork(@RequestBody WorkIdDTO resDTO){
+        try {
+            workService.delete(resDTO);
             return new ResponseEntity<>(true,HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();

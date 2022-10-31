@@ -21,32 +21,23 @@ import java.sql.Time;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="Schedule")
+@Table(name="Orders")
 public class OrderDTO {
     @JsonProperty("resid")
     @NonNull
     @Id
-    @Column(name ="id")
     private int resId;
     @JsonProperty("foodid")
     @NonNull
-    @Column(name ="day")
     private int foodId;
     @JsonProperty("drinkid")
     @NonNull
-    @Column(name ="open")
     private int drinkId;
     @JsonProperty("quan")
-    @NonNull
-    @Column(name ="close")
     private int quan;
     @JsonProperty("stor")
-    @NonNull
-    @Column(name ="close")
     private String stor;
     @JsonProperty("day")
-    @NonNull
-    @Column(name ="close")
     private Date day;
 
 }

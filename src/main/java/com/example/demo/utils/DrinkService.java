@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.DrinkDTO;
+import com.example.demo.DTO.DrinkIdDTO;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTOHAV.DrinkDTOCOM;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,10 @@ public class DrinkService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(DrinkDTOCOM drinkDTODTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteDrink @id='?'");
-        preparedStatement.setInt(1,Integer.valueOf(drinkDTODTO.getId()));
+    public boolean delete(DrinkIdDTO drinkDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteDrink @id=?");
+        System.out.println(drinkDTO.getDrinkId());
+        preparedStatement.setInt(1,drinkDTO.getDrinkId());
         return preparedStatement.execute();
     }
 

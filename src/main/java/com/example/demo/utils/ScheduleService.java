@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
-import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTO.ScheduleDTO;
+import com.example.demo.DTO.ScheduleIdDTO;
 import com.example.demo.DTOHAV.ScheduleDTOCOM;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class ScheduleService {
     }
 
     public boolean insert(ScheduleDTO resDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertSchedule @restId=?, @dayname=?,@Open=?,@Close=?");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertSchedule @restId=?, @dayname='?',@Open=?,@Close=?");
         preparedStatement.setString(1,resDTO.getId());
         preparedStatement.setString(2,resDTO.getDay());
         preparedStatement.setTime(3,resDTO.getOpen());
@@ -45,10 +45,10 @@ public class ScheduleService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(ScheduleDTOCOM scheduleDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteSchedule @restId='?', @dayname='?'");
-        preparedStatement.setInt(1,scheduleDTO.getId());
-        preparedStatement.setString(2,scheduleDTO.getDay());
+    public boolean delete(ScheduleIdDTO scheduleDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteSchedule @restId=?, @dayname='?'");
+        preparedStatement.setInt(1,scheduleDTO.getRestId());
+        preparedStatement.setInt(2,scheduleDTO.getDay());
         return preparedStatement.execute();
     }
 }
