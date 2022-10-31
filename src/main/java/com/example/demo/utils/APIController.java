@@ -311,7 +311,7 @@ public class APIController {
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
     }
     @DeleteMapping("delete/food")
-    public ResponseEntity<Boolean> deleteFood(@RequestBody Integer restId){
+    public ResponseEntity<Boolean> deleteFood(@RequestBody FoodDTOCOM restId){
         try {
             return new ResponseEntity<Boolean>(foodService.delete(restId),HttpStatus.OK);
         } catch (SQLException e) {
@@ -320,7 +320,7 @@ public class APIController {
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
     }
     @DeleteMapping("delete/ingre")
-    public ResponseEntity<Boolean> deleteIngre(@RequestBody Integer restId){
+    public ResponseEntity<Boolean> deleteIngre(@RequestBody IngredDTOCOM restId){
         try {
             return new ResponseEntity<Boolean>(ingredService.delete(restId),HttpStatus.OK);
         } catch (SQLException e) {
