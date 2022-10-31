@@ -1,16 +1,14 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.*;
+import com.example.demo.DTOHAV.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController("com.example.demo.utils.APIController")
 @CrossOrigin(origins = "http://localhost:5000")
@@ -400,15 +398,15 @@ public class APIController {
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
 
     }
-    @DeleteMapping("delete/drink")
-    public ResponseEntity<Boolean> deleteDrink(@RequestBody Integer restId){
-        try {
-            return new ResponseEntity<Boolean>(drinkService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-    }
+//    @DeleteMapping("delete/drink")
+//    public ResponseEntity<Boolean> deleteDrink(@RequestBody DrinkIdDTO restId){
+//        try {
+//            return new ResponseEntity<Boolean>(drinkService.delete(restId),HttpStatus.OK);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+//    }
     @DeleteMapping("delete/food")
     public ResponseEntity<Boolean> deleteFood(@RequestBody FoodDTOCOM restId){
         try {

@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.IsInDTO;
-import com.example.demo.DTO.IsInIdDTO;
+import com.example.demo.DTOHAV.IsInDTOCOM;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;

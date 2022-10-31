@@ -1,8 +1,6 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.IngredDTO;
-import com.example.demo.DTO.DrinkIdDTO;
-import com.example.demo.DTO.IngredIdDTO;
 import com.example.demo.DTOHAV.IngredDTOCOM;
 import org.springframework.stereotype.Service;
 

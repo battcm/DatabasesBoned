@@ -2,9 +2,6 @@ package com.example.demo.utils;
 
 import com.example.demo.DTO.CanDTO;
 import com.example.demo.DTO.CanIdDTO;
-import com.example.demo.DTO.IsInDTO;
-import com.example.demo.DTO.ResDTO;
-import com.example.demo.DTOHAV.CanStoreWithDTOCOM;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;

@@ -1,6 +1,5 @@
 package com.example.demo.utils;
 
-import com.example.demo.DTO.IngredIdDTO;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTO.ResIdDTO;
 import com.example.demo.DTOHAV.ResDTOCOM;
@@ -44,7 +43,7 @@ public class ResService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(Integer resDTO) throws SQLException {
+    public boolean delete(ResIdDTO resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @id='?'");
         preparedStatement.setInt(1,resDTO);
         return preparedStatement.execute();
