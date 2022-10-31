@@ -37,17 +37,21 @@ public class ResService {
         return preparedStatement.execute();
     }
     public boolean update(ResDTOCOM resDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @name='?', @addr='?', @id='?'");
-        preparedStatement.setString(1,( resDTO).getName());
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @name=?, @addr=?, @id=?");
+        preparedStatement.setString(1,resDTO.getName());
         preparedStatement.setString(2,resDTO.getAddr());
         preparedStatement.setInt(3,resDTO.getId());
         return preparedStatement.execute();
     }
 
-    public boolean delete(ResIdDTO resDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteRest @id=?");
-        System.out.println(resDTO.getRestId());
-        preparedStatement.setInt(1,resDTO.getRestId());
+    public boolean delete(Integer resDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @id='?'");
+        preparedStatement.setInt(1,resDTO);
         return preparedStatement.execute();
     }
-}
+    public ResultSet selectAll() throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * from Restaurant");
+        return preparedStatement.executeQuery();
+
+    }
+    }

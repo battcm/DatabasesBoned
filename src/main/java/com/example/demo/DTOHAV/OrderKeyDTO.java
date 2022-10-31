@@ -19,25 +19,23 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="Sells")
-public class SellsDTOCOM {
-    @JsonProperty("resId")
+@Table(name="Schedule")
+public class OrderKeyDTO{
+    @JsonProperty("resid")
     @NonNull
     @Id
-    @Column(name ="resId")
+    @Column(name = "resId")
     private int resId;
 
-	@JsonProperty("foodId")
+    @JsonProperty("ingreid")
     @NonNull
     @Id
-    @Column(name ="foodId")
-    private int foodId;
+    @Column(name = "ingreId")
+    private int ingreId;
 
-    @JsonProperty("mealType")
+    @JsonProperty("drinkid")
     @NonNull
     @Id
-    @Column(name ="mealType")
-    private String mealType;
+    @Column(name = "drinkId")
+    private int drinkId;
 }
-
-

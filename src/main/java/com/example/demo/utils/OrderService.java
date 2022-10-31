@@ -31,7 +31,7 @@ public class OrderService {
     }
 
     public boolean insert(OrderDTO resDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId=?, @FoodItemID=?,@drinkId=?,@date=?,@quant=?,@Type=?");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId=?, @IngrediantID=?,@drinkId=?,@date=?,@quant=?,@Type=?");
         preparedStatement.setInt(1,resDTO.getResId());
         preparedStatement.setInt(2,resDTO.getFoodId());
         preparedStatement.setInt(3,resDTO.getDrinkId());
@@ -54,10 +54,10 @@ public class OrderService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(OrderIdDTO orderDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteOrder @RestId=?, @FoodItemID=? @DrinkId=?");
-        preparedStatement.setInt(1,orderDTO.getRestId());
-        preparedStatement.setInt(2,orderDTO.getFoodId());
+    public boolean delete(OrderKeyDTO orderDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId=?, @IngrediantID=?,@drinkId=?");
+        preparedStatement.setInt(1,orderDTO.getResId());
+        preparedStatement.setInt(2,orderDTO.getIngreId());
         preparedStatement.setInt(3,orderDTO.getDrinkId());
 
         return preparedStatement.execute();

@@ -1,4 +1,4 @@
-package com.example.demo.DTOHAV;
+package com.example.demo.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -19,25 +19,17 @@ import javax.persistence.Table;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
-@Table(name="Sells")
-public class SellsDTOCOM {
-    @JsonProperty("resId")
+@Table(name="delete")
+public class DeleteDTO {
+    @JsonProperty("name")
     @NonNull
     @Id
-    @Column(name ="resId")
-    private int resId;
+    @Column(name ="name")
+    private String table;
 
-	@JsonProperty("foodId")
+    @JsonProperty("brand")
     @NonNull
-    @Id
-    @Column(name ="foodId")
-    private int foodId;
-
-    @JsonProperty("mealType")
-    @NonNull
-    @Id
-    @Column(name ="mealType")
-    private String mealType;
+    @Column(name ="brand")
+    private String brand;
+  
 }
-
-

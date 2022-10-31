@@ -15,8 +15,6 @@ import javax.persistence.Table;
 @ToString(doNotUseGetters = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @EqualsAndHashCode
 @Builder
 @Table(name="UserTable")

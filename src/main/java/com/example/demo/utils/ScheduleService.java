@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import com.example.demo.DTO.ScheduleDTO;
 import com.example.demo.DTO.ScheduleIdDTO;
 import com.example.demo.DTOHAV.ScheduleDTOCOM;
+import com.example.demo.DTOHAV.ScheduleKeyDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -40,15 +41,15 @@ public class ScheduleService {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateSchedule @restId='?', @dayname='?',@Open='?',@Close='?'");
         preparedStatement.setInt(1,scheduleDTO.getId());
         preparedStatement.setString(2,scheduleDTO.getDay());
-        preparedStatement.setTime(3,scheduleDTO.getOpen());
-        preparedStatement.setTime(4,scheduleDTO.getClose());
+        preparedStatement.setString(3,scheduleDTO.getOpen());
+        preparedStatement.setString(4,scheduleDTO.getClose());
         return preparedStatement.execute();
     }
 
-    public boolean delete(ScheduleIdDTO scheduleDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteSchedule @restId=?, @dayname='?'");
-        preparedStatement.setInt(1,scheduleDTO.getRestId());
-        preparedStatement.setInt(2,scheduleDTO.getDay());
+    public boolean delete(ScheduleKeyDTO scheduleDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteSchedule @restId='?', @dayname='?'");
+        preparedStatement.setInt(1,scheduleDTO.getResId());
+        preparedStatement.setString(2,scheduleDTO.getDay());
         return preparedStatement.execute();
     }
 }

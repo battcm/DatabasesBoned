@@ -34,10 +34,10 @@ public class IsInService {
         preparedStatement.setInt(2,resDTO.getIngredid());
         return preparedStatement.execute();
     }
-    public boolean delete(IsInIdDTO isInDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteIsIn @FoodID='?', @IngredientID='?'");
-        preparedStatement.setInt(1,isInDTO.getFoodid());
-        preparedStatement.setInt(2,isInDTO.getIngreid());
+    public boolean delete(IsInDTOCOM isInDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteIsIn @FoodID=?, @IngredientID=?");
+        preparedStatement.setInt(1,isInDTO.getFoodId());
+        preparedStatement.setInt(2,isInDTO.getIngreId());
         return preparedStatement.execute();
     }
 }

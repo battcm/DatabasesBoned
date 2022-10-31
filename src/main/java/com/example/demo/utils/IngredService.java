@@ -35,16 +35,15 @@ public class IngredService {
     }
 
     public boolean update(IngredDTOCOM ingredDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_ingre @IngreId=? @IngreName='?', @IngreType='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_ingre @IngreID=?, @IngreName=?, @IngreType=?");
         preparedStatement.setInt(1,ingredDTO.getId());
         preparedStatement.setString(2,ingredDTO.getName());
         preparedStatement.setString(3,ingredDTO.getType());
         return preparedStatement.execute();
     }
-    public boolean delete(IngredIdDTO ingredDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId=?");
-        System.out.println(ingredDTO.getIngreId());
-        preparedStatement.setInt(1,ingredDTO.getIngreId());
+    public boolean delete(IngredDTOCOM ingredDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId=? @IngreName=?, @IngreType=?");
+        preparedStatement.setInt(1,ingredDTO.getId());
         return preparedStatement.execute();
     }
 }

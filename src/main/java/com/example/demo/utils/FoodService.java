@@ -45,10 +45,9 @@ public class FoodService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(FoodIdDTO foodDTO) throws SQLException {
+    public boolean delete(FoodDTOCOM foodDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_foodItem @FoodItemID=?");
-        System.out.println(foodDTO.getFoodId());
-        preparedStatement.setInt(1,foodDTO.getFoodId());
+        preparedStatement.setInt(1,Integer.valueOf(foodDTO.getId()));
         return preparedStatement.execute();
     }
 }

@@ -46,11 +46,10 @@ public class SellService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(SellIdDTO sellDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteSells @RestId=?, @FoodId=?");
-        System.out.println(sellDTO.getRestId()+", "+sellDTO.getRestId());
-        preparedStatement.setInt(1,sellDTO.getRestId());
-        preparedStatement.setInt(2,sellDTO.getFoodId());
+    public boolean delete(SellsKeyDTO sellsDTO) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteSells @RestID='?', @FoodID='?'");
+        preparedStatement.setInt(1,sellsDTO.getResId());
+        preparedStatement.setInt(2,sellsDTO.getFoodid());
         return preparedStatement.execute();
     }
 }
