@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import com.example.demo.DTO.OrderDTO;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTOHAV.OrderDTOCOM;
+import com.example.demo.DTOHAV.OrderKeyDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -53,8 +54,9 @@ public class OrderService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(OrderDTOCOM orderDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId='?', @IngrediantID='?',@drinkId=?");
+    public boolean delete(OrderKeyDTO orderDTO) throws SQLException {
+        System.out.println(orderDTO.getDrinkId());
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteOrder @restId=?, @IngrediantID=?,@drinkId=?");
         preparedStatement.setInt(1,orderDTO.getResId());
         preparedStatement.setInt(2,orderDTO.getIngreId());
         preparedStatement.setInt(3,orderDTO.getDrinkId());

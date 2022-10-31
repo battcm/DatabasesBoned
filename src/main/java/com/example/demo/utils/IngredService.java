@@ -41,9 +41,9 @@ public class IngredService {
         preparedStatement.setString(3,ingredDTO.getType());
         return preparedStatement.execute();
     }
-    public boolean delete(IngredDTOCOM ingredDTO) throws SQLException {
+    public boolean delete(Integer ingredDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId='?' @IngreName='?', @IngreType='?'");
-        preparedStatement.setInt(1,ingredDTO.getId());
+        preparedStatement.setInt(1,ingredDTO);
         return preparedStatement.execute();
     }
 }

@@ -6,10 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 @Service("com.example.demo.utils.ResService")
@@ -42,9 +40,14 @@ public class ResService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(ResDTOCOM resDTO) throws SQLException {
+    public boolean delete(Integer resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @id='?'");
-        preparedStatement.setInt(1,resDTO.getId());
+        preparedStatement.setInt(1,resDTO);
         return preparedStatement.execute();
     }
-}
+    public ResultSet selectAll() throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * from Restaurant");
+        return preparedStatement.executeQuery();
+
+    }
+    }

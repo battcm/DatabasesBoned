@@ -3,6 +3,7 @@ package com.example.demo.utils;
 import com.example.demo.DTO.ResDTO;
 import com.example.demo.DTO.SellDTO;
 import com.example.demo.DTO.WorkDTO;
+import com.example.demo.DTOHAV.WorkKeyDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -34,6 +35,13 @@ public class WorkService {
         preparedStatement.setString(1,resDTO.getUser());
         preparedStatement.setInt(2,resDTO.getRestId());
         preparedStatement.setString(3,""+resDTO.getPerm());
+        return preparedStatement.execute();
+    }
+
+    public Boolean delete(WorkKeyDTO restId) throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteWorkFor @user=?, @restId=?");
+        preparedStatement.setString(1,restId.getUsername());
+        preparedStatement.setInt(2,restId.getResId());
         return preparedStatement.execute();
     }
 }

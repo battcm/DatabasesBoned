@@ -45,9 +45,9 @@ public class DrinkService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(DrinkDTOCOM drinkDTODTO) throws SQLException {
+    public boolean delete(Integer drinkDTODTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteDrink @id='?'");
-        preparedStatement.setInt(1,Integer.valueOf(drinkDTODTO.getId()));
+        preparedStatement.setInt(1,Integer.valueOf(drinkDTODTO));
         return preparedStatement.execute();
     }
 
