@@ -220,9 +220,9 @@ public class APIController {
         }
     }
     @PostMapping("/delete/ingred")
-    public ResponseEntity<Boolean> deleteIngred(@RequestBody IngredIdDTO resDTO){
+    public ResponseEntity<Boolean> deleteIngred(@RequestBody IngredDTOCOM ingredDTOCOM){
         try {
-            ingredService.delete(resDTO);
+            ingredService.delete(ingredDTOCOM);
             return new ResponseEntity<>(true,HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -240,19 +240,9 @@ public class APIController {
         }
     }
     @PostMapping("/delete/order")
-    public ResponseEntity<Boolean> deleteOrder(@RequestBody OrderIdDTO resDTO){
+    public ResponseEntity<Boolean> deleteOrder(@RequestBody OrderDTOCOM orderDTOCOM){
         try {
-            orderService.delete(resDTO);
-            return new ResponseEntity<>(true,HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-        }
-    }
-    @PostMapping("/delete/isa")
-    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInIdDTO resDTO){
-        try {
-            isInService.delete(resDTO);
+            orderService.delete(orderDTOCOM);
             return new ResponseEntity<>(true,HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -378,26 +368,6 @@ public class APIController {
         }
     }
 
-    @DeleteMapping("delete/res")
-    public ResponseEntity<Boolean> deleteRes(@RequestBody Integer restId){
-        try {
-            return new ResponseEntity<Boolean>(resService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-
-    }
-    @DeleteMapping("delete/can")
-    public ResponseEntity<Boolean> deleteCan(@RequestBody CanStoreWithDTOCOM restId){
-        try {
-            return new ResponseEntity<Boolean>(canService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-
-    }
 //    @DeleteMapping("delete/drink")
 //    public ResponseEntity<Boolean> deleteDrink(@RequestBody DrinkIdDTO restId){
 //        try {
@@ -407,64 +377,29 @@ public class APIController {
 //        }
 //        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
 //    }
-    @DeleteMapping("delete/food")
-    public ResponseEntity<Boolean> deleteFood(@RequestBody FoodDTOCOM restId){
-        try {
-            return new ResponseEntity<Boolean>(foodService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-    }
-    @DeleteMapping("delete/ingre")
-    public ResponseEntity<Boolean> deleteIngre(@RequestBody IngredDTOCOM restId){
-        try {
-            return new ResponseEntity<Boolean>(ingredService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-    }
+
     @DeleteMapping("delete/isa")
-    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInDTOCOM restId){
+    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInDTOCOM isInDTOCOM){
         try {
-            return new ResponseEntity<Boolean>(isInService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-    }
-    @DeleteMapping("delete/order")
-    public ResponseEntity<Boolean> deleteOrder(@RequestBody OrderKeyDTO restId){
-        try {
-            return new ResponseEntity<Boolean>(orderService.delete(restId),HttpStatus.OK);
+            return new ResponseEntity<Boolean>(isInService.delete(isInDTOCOM),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
     }
     @DeleteMapping("delete/sched")
-    public ResponseEntity<Boolean> deleteSched(@RequestBody ScheduleKeyDTO restId){
+    public ResponseEntity<Boolean> deleteSched(@RequestBody ScheduleIdDTO scheduleIdDTO){
         try {
-            return new ResponseEntity<Boolean>(scheduleService.delete(restId),HttpStatus.OK);
+            return new ResponseEntity<Boolean>(scheduleService.delete(scheduleIdDTO),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
     }
     @DeleteMapping("delete/sell")
-    public ResponseEntity<Boolean> deleteSells(@RequestBody SellsKeyDTO restId){
+    public ResponseEntity<Boolean> deleteSells(@RequestBody SellIdDTO sellIdDTO){
         try {
-            return new ResponseEntity<Boolean>(sellService.delete(restId),HttpStatus.OK);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
-    }
-    @DeleteMapping("delete/work")
-    public ResponseEntity<Boolean> deleteWork(@RequestBody WorkKeyDTO restId){
-        try {
-            return new ResponseEntity<Boolean>(workService.delete(restId),HttpStatus.OK);
+            return new ResponseEntity<Boolean>(sellService.delete(sellIdDTO),HttpStatus.OK);
         } catch (SQLException e) {
             e.printStackTrace();
         }

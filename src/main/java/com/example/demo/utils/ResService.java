@@ -42,7 +42,7 @@ public class ResService {
 
     public boolean delete(ResIdDTO resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @id='?'");
-        preparedStatement.setInt(1,resDTO);
+        preparedStatement.setInt(1,resDTO.getRestId());
         return preparedStatement.execute();
     }
     public ResultSet selectAll() throws SQLException {

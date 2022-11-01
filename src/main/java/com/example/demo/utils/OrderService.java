@@ -53,7 +53,7 @@ public class OrderService {
         return preparedStatement.execute();
     }
 
-    public boolean delete(OrderKeyDTO orderDTO) throws SQLException {
+    public boolean delete(OrderDTOCOM orderDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertOrder @restId=?, @IngrediantID=?,@drinkId=?");
         preparedStatement.setInt(1,orderDTO.getResId());
         preparedStatement.setInt(2,orderDTO.getIngreId());
