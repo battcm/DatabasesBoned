@@ -54,6 +54,8 @@ rhit.main = function () {
             location.href="IsIn.html";		}
          document.querySelector("#Food").onclick=(event)=>{
                 location.href="FoodItems.html";		}
+         document.querySelector("#app").onclick=(event)=>{
+                 location.href="app.html";		}
 	}
 
 
