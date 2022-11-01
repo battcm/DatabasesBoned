@@ -26,5 +26,5 @@ public class ScheduleIdDTO {
     private int restId;
     @JsonProperty("day")
     @NonNull
-    private int day;
+    private String day;
 }

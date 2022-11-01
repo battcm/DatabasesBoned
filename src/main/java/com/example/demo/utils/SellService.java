@@ -46,8 +46,8 @@ public class SellService {
 
     public boolean delete(SellIdDTO sellsDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteSells @RestID='?', @FoodID='?'");
-        preparedStatement.setInt(1,sellsDTO.getResId());
-        preparedStatement.setInt(2,sellsDTO.getFoodid());
+        preparedStatement.setInt(1,sellsDTO.getRestId());
+        preparedStatement.setInt(2,sellsDTO.getFoodId());
         return preparedStatement.execute();
     }
 }

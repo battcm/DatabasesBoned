@@ -47,7 +47,7 @@ public class ScheduleService {
 
     public boolean delete(ScheduleIdDTO scheduleDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteSchedule @restId='?', @dayname='?'");
-        preparedStatement.setInt(1,scheduleDTO.getResId());
+        preparedStatement.setInt(1,scheduleDTO.getRestId());
         preparedStatement.setString(2,scheduleDTO.getDay());
         return preparedStatement.execute();
     }

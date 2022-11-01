@@ -47,7 +47,7 @@ public class WorkService {
     public Boolean delete(WorkIdDTO restId) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec deleteWorkFor @user=?, @restId=?");
         preparedStatement.setString(1,restId.getUsername());
-        preparedStatement.setInt(2,restId.getResId());
+        preparedStatement.setInt(2,restId.getRestId());
         return preparedStatement.execute();
     }
 }
