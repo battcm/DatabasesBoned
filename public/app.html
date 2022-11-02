@@ -21,15 +21,14 @@
         <script>
             $('#datepicker').datepicker();
         </script>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <button id="drop"class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select Restraunt</button>
-            <div class="dropdown-menu">
-              <div role="separator" class="dropdown-divider"></div>
-            </div>
-          </div>
-        </div>
-        <table id="employees"></table>
+        <p> Select a Restraunt:
+          <select id="select1">
+          </select>
+      </p>
+      <hr>
+      <button id="submit" type="button" class="btn btn-primary btn-outline">Submit</button>
+ 
+        <table id="restDay"></table>
       </div>
 
   <script src="scripts/jquery.min.js"></script>
