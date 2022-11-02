@@ -2,6 +2,11 @@ package com.example.demo.utils;
 
 import com.example.demo.DTO.*;
 import com.example.demo.DTOHAV.*;
+import org.jooq.Record;
+import org.jooq.RecordMapper;
+import org.jooq.impl.DSL;
+import org.jooq.tools.json.JSONArray;
+import org.jooq.tools.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -9,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController("com.example.demo.utils.APIController")
 @CrossOrigin(origins = "http://localhost:5000")
@@ -404,6 +410,16 @@ public class APIController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+    }
+    @PostMapping("select/RestName")
+    public ResponseEntity<JSONArray> getRestName(){
+        try{
+        return new ResponseEntity<JSONArray>(resService.selectRestName(),HttpStatus.OK);
+
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
 }
 
