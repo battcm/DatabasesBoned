@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>App</title>
+        <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+       <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+      <link rel="stylesheet" href="styles/bootstrap-material-design.min.css">
+      <link rel="stylesheet" href="styles/main.css">
+    </head>
+    <body>
+      <nav class="navbar navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">APP</a>
+      </nav>
+      <div id="mainPage" class="container page-container">
+        <H2>Get Meals with Ingredients from last two weeks</H2>
+        <p>Input Selection Day
+        <input id="datepicker" width="276" />
+        <script>
+            $('#datepicker').datepicker();
+        </script>
+        </p>
+        <p> Select a Restraunt:
+          <select id="select1">
+          </select>
+      </p>
+      <hr>
+      <button id="submit" type="button" class="btn btn-primary btn-outline">Submit</button>
+ 
+        <table id="restDay"></table>
+      </div>
+
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/popper.js"></script>
+  <script src="scripts/bootstrap-material-design.js"></script>
+  <script>$("body").bootstrapMaterialDesign();</script>
+  <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="scripts/app.js"></script>
+
+</body>
+
+</html>

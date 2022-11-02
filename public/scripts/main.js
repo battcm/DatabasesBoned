@@ -43,7 +43,9 @@ rhit.main = function () {
 			const response = await fetch('http://localhost:8080/v1/insert/user', {
 			  method: 'POST',
 			  body: JSON.stringify(obj),
-			  headers: headers
+			  headers: {
+                'Content-Type': 'application/json'
+              }
 			}).then(function(value){
 			console.log(value.status);
 			// do something with myJson
