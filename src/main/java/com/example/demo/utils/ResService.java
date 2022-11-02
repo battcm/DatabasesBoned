@@ -116,13 +116,12 @@ public class ResService {
                 });
         return new JSONArray(json);
     }
-
-    public JSONArray selectApp(Date dateTime, String rest) throws SQLException {
-        Connection dbConnection = DriverManager.getConnection(connectionString);
-        PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec app @day=?, @rest=?");
-        preparedStatement.setDate(1, dateTime);
-        preparedStatement.setString(2, rest);
-        ResultSet resultSet = preparedStatement.executeQuery();
+    public JSONArray selectApp(Date dateTime,String rest ) throws SQLException{
+        Connection dbConnection=DriverManager.getConnection(connectionString);
+        PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec app @day=?, @rest=?",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setDate(1,dateTime);
+        preparedStatement.setString(2,rest);
+        ResultSet resultSet= preparedStatement.executeQuery();
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
