@@ -63,9 +63,6 @@ function show(data) {
     
     // Loop to access all rows 
     for (let r of Object.values(data)) {
-        tab += `<tr> 
-    <td>${r.RestName} </td>         
-</tr>`;
 $('.dropdown-menu').append('<a class="dropdown-item" href="#">'+`${r.RestName}`+'<a>');
     }
 	
