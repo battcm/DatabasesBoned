@@ -86,7 +86,38 @@ public class ResService {
     }
     public JSONArray selectRestName() throws SQLException{
         Connection dbConnection=DriverManager.getConnection(connectionString);
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec selectRestName");
+        PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec selectRestName");
+        ResultSet resultSet= preparedStatement.executeQuery();
+        ResultSetMetaData md = resultSet.getMetaData();
+        int numCols = md.getColumnCount();
+        List<String> colNames = IntStream.range(0, numCols)
+                .mapToObj(i -> {
+                    try {
+                        return md.getColumnName(i + 1);
+                    } catch (SQLException e) {
+
+                        e.printStackTrace();
+                        return "?";
+                    }
+                })
+                .collect(Collectors.toList());
+        List json = DSL.using(dbConnection)
+                .fetch(resultSet)
+                .map(new RecordMapper() {
+                    @Override
+                    public JSONObject map(Record r) {
+                        JSONObject obj = new JSONObject();
+                        colNames.forEach(cn -> obj.put(cn, r.get(cn)));
+                        return obj;
+                    }
+                });
+        return new JSONArray(json);
+    }
+    public JSONArray selectApp(Date dateTime,String rest ) throws SQLException{
+        Connection dbConnection=DriverManager.getConnection(connectionString);
+        PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec app @day=?, @rest=?");
+        preparedStatement.setDate(1,dateTime);
+        preparedStatement.setString(2,rest);
         ResultSet resultSet= preparedStatement.executeQuery();
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();

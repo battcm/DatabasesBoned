@@ -421,5 +421,14 @@ public class APIController {
         }
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
+    @PostMapping("select/app")
+    public ResponseEntity<JSONArray> getAppView(@RequestBody AppDTO appDTO){
+        try{
+            return new ResponseEntity<JSONArray>(resService.selectApp(appDTO.getDay(),appDTO.getRest()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
 }
 
