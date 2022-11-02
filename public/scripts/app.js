@@ -45,7 +45,9 @@ const userAction = async () => {
 	});
 	const data=await response.json();
 	console.log(data);
-	show(data);
+	for (let r of Object.values(data)) {
+		$('.dropdown-menu').append('<a class="dropdown-item" href="#">'+`${r.RestName}`+'<a>');
+			}
 
 	// do something with myJson
 	if( response.status==200){
@@ -55,18 +57,6 @@ const userAction = async () => {
 	}
 }
 
-function show(data) {
-	
-    let tab = 
-        `<tr>
-          <th>RestName</th></tr>`;
-    
-    // Loop to access all rows 
-    for (let r of Object.values(data)) {
-$('.dropdown-menu').append('<a class="dropdown-item" href="#">'+`${r.RestName}`+'<a>');
-    }
-	
-}
 	
 
 	userAction();
