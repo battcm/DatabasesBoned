@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.IsInDTO;
-import com.example.demo.DTOHAV.IsInDTOCOM;
+import com.example.demo.DTO.IsInIdDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
@@ -34,10 +34,10 @@ public class IsInService {
         preparedStatement.setInt(2,resDTO.getIngredid());
         return preparedStatement.execute();
     }
-    public boolean delete(IsInDTOCOM isInDTO) throws SQLException {
+    public boolean delete(IsInIdDTO isInDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec DeleteIsIn @FoodID=?, @IngredientID=?");
-        preparedStatement.setInt(1,isInDTO.getFoodId());
-        preparedStatement.setInt(2,isInDTO.getIngreId());
+        preparedStatement.setInt(1,isInDTO.getFoodid());
+        preparedStatement.setInt(2,isInDTO.getIngreid());
         return preparedStatement.execute();
     }
 }

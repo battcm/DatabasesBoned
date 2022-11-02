@@ -23,6 +23,5 @@ public class ResIdDTO {
     @JsonProperty("restId")
     @NonNull
     @Id
-    @Column(name = "UserName")
     private int restId;
 }
