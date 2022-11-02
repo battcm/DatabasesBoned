@@ -32,10 +32,47 @@ rhit.ClassName = class {
 rhit.main = function () {
 // Data Picker Initialization
 // Date picker only
-$('#datepicker-popup-inline').datetimepicker({
-    inline: true
-});
 
+const userAction = async () => {
+	console.log('here');
+	const obj={ };
+	const response = await fetch(' http://localhost:8080/v1/select/RestName', {
+	  method: 'POST',
+	  body: JSON.stringify(obj),
+	  headers: {
+		'Content-Type': 'application/json'
+	  }
+	});
+	const data=await response.json();
+	console.log(data);
+	show(data);
+
+	// do something with myJson
+	if( response.status==200){
+
+	}else{
+		location.href="fail.html";
+	}
+}
+
+function show(data) {
+	
+    let tab = 
+        `<tr>
+          <th>RestName</th></tr>`;
+    
+    // Loop to access all rows 
+    for (let r of Object.values(data)) {
+        tab += `<tr> 
+    <td>${r.RestName} </td>         
+</tr>`;
+$('.dropdown-menu').append('<a class="dropdown-item" href="#">'+`${r.RestName}`+'<a>');
+    }
+	
+}
+	
+
+	userAction();
     
 	}
 

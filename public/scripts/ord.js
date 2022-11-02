@@ -43,7 +43,6 @@ rhit.main = function () {
 	document.querySelector("#Submit").onclick = (event) => {
 		console.log(`values: ${inputEmailEl.value}  , ${inputPasswordEl.value}`);
 		const userAction = async () => {
-            console.log('here');
 			const obj={ resid: `${inputEmailEl.value}`,foodid: `${inputPasswordEl.value}`, drinkid: `${inputEmailname.value}`,quan: `${inputPasswordAddr.value}`,stor: `${inputEmailElll.value}`,day: `${inputPasswordElll.value}`};
 			const response = await fetch(' http://localhost:8080/v1/insert/order', {
 			  method: 'POST',
