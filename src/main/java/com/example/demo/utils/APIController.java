@@ -226,7 +226,7 @@ public class APIController {
         }
     }
     @PostMapping("/delete/ingred")
-    public ResponseEntity<Boolean> deleteIngred(@RequestBody IngredDTOCOM ingredDTOCOM){
+    public ResponseEntity<Boolean> deleteIngred(@RequestBody IngredIdDTO ingredDTOCOM){
         try {
             ingredService.delete(ingredDTOCOM);
             return new ResponseEntity<>(true,HttpStatus.OK);
@@ -385,7 +385,7 @@ public class APIController {
 //    }
 
     @DeleteMapping("delete/isa")
-    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInDTOCOM isInDTOCOM){
+    public ResponseEntity<Boolean> deleteIsa(@RequestBody IsInIdDTO isInDTOCOM){
         try {
             return new ResponseEntity<Boolean>(isInService.delete(isInDTOCOM),HttpStatus.OK);
         } catch (SQLException e) {
@@ -430,5 +430,15 @@ public class APIController {
         }
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
+    @PostMapping("tableify/ingredient")
+    public ResponseEntity<Boolean> tableifyIngredient(){
+        try{
+            return new ResponseEntity<Boolean>(ingredService.tableify(),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+    }
+
 }
 
