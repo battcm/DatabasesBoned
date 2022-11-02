@@ -29,6 +29,43 @@ rhit.ClassName = class {
 
 /* Main */
 /** function and class syntax examples */
+// rhit.renderTable = function () {
+// 	const url = ' http://localhost:8080/v1/tableify/ingredient';
+// 	let request = new Request(url,{
+// 		method: 'POST',
+// 		body: JSON.stringify(data),
+// 		headers: new Headers({
+// 			'Content-Type': 'application/json; charset=UTF-8'
+// 		})
+// 	});
+
+// 	fetch(request)
+// 		.then$(function () {
+		
+// 				let newRow = $("<tr>");
+// 				let cols = '';
+		
+// 				// Table columns
+// 				cols += '<th scrope="row">' + counter + '</th>';
+// 				cols += '<td><input class="form-control rounded-0" type="text" name="firstname" placeholder="First name"></td>';
+// 				cols += '<td> + + </td>';
+// 				cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Handle"></td>';
+// 				cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
+		
+// 				// Insert the columns inside a row
+// 				newRow.append(cols);
+// 				$("table").append(newRow);
+// 			});
+		
+// 			// Remove row when delete btn is clicked
+// 			$("table").on("click", "#deleteRow", function (event) {
+// 				$(this).closest("tr").remove();
+// 				counter -= 1
+// 			});
+// 		});
+
+// }
+
 rhit.main = function () {
 
 
@@ -76,7 +113,7 @@ rhit.main = function () {
             if( value.status==200){
 
             }else{
-                //location.href="fail.html";
+                location.href="fail.html";
             }
         }
             )};
@@ -84,6 +121,9 @@ rhit.main = function () {
           userAction();
         }
 	}
+
+	
+		
 
 
 rhit.main();

@@ -68,6 +68,7 @@ rhit.res = function () {
             const response = await fetch(' http://localhost:8080/v1/update/worksfor', {
               method: 'POST',
               body: JSON.stringify(obj),
+			  
               headers: {
                 'Content-Type': 'application/json'
               }
