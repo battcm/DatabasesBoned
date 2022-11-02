@@ -40,6 +40,7 @@ public class FoodService {
         preparedStatement.setInt(2,resDTO.getCal());
         return preparedStatement.execute();
     }
+
     public boolean update(FoodDTOCOM foodDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_foodItem @FoodItemID='?', @Name='?', @Calories=?");
         preparedStatement.setInt(1,Integer.valueOf(foodDTO.getId()));
