@@ -57,44 +57,46 @@ const userAction = async () => {
 		location.href="fail.html";
 	}
 }
-const userSub = async () => {
+
 	document.querySelector('#submit').onclick=(event)=>{
 		const sel=document.querySelector('#select1');
 		const day =document.querySelector('#datepicker');
 		const obj={day: `${day.value}`, rest:`${sel.value}` };
 		console.log(obj);
+		const userSub = async () => {
 		const response = await fetch(' http://localhost:8080/v1/select/app', {
-	  method: 'POST',
-	  body: JSON.stringify(obj),
-	  headers: {
-		'Content-Type': 'application/json'
-	  }
-	});
+			method: 'POST',
+			body: JSON.stringify(obj),
+			headers: {
+			  'Content-Type': 'application/json'
+			}
+		  });
 	if( response.status==200){
 		const data=await response.json();
 		console.log(data);
 		let tab = 
         `<tr>
-          <th>RestID</th>
-          <th>RestName</th>
-          <th>RestAddress</th>
-          <th>Food Name</th>
-		  <th>Food Calories</th>
-		  <th>Drink ID</th>
-		  <th>Drink Name</th>
-		  <th>Drink Brand</th>
-		  <th>Drink Price</th>
-		  <th>Food Date Recieved</th>
-		  <th>Quantity</th>
-		  <th>Storage Type</th>
+          <th>RestID	</th>
+          <th>RestName	</th>
+          <th>RestAddress	</th>
+          <th>Food Name	</th>
+		  <th>Food Calories	</th>
+		  <th>Drink ID	</th>
+		  <th>Drink Name	</th>
+		  <th>Drink Brand	</th>
+		  <th>Drink Price	</th>
+		  <th>Food Date Recieved	</th>
+		  <th>Quantity	</th>
+		  <th>Storage Type	</th>
          </tr>`;
 		for (let r of Object.values(data)) {
+			r.DateRecieved=r.DateRecieved.slice(0,10);
 			tab += `<tr> 
-			<td>${r.RestID} </td>
+			<td>${r.RestId} </td>
 			<td>${r.RestName}</td>
 			<td>${r.RestAddress}</td> 
 			<td>${r.Name}</td> 
-			<td>${r.FoodCalories}</td> 
+			<td>${r.Calories}</td> 
 			<td>${r.DrinkID}</td> 
 			<td>${r.DrinkName}</td> 
 			<td>${r.DrinkBrand}</td> 
@@ -107,16 +109,18 @@ const userSub = async () => {
 		document.querySelector('#restDay').innerHTML=(tab);
 
 	}else{
-		location.href="fail.html";
+		// location.href="fail.html";
 	}
 
 	}
+	userSub();
 }
+
 
 	
 
 	userAction();
-	userSub();
+
     
 	}
 
