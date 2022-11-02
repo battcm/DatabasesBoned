@@ -1,6 +1,7 @@
 package com.example.demo.utils;
 
 import com.example.demo.DTO.IngredDTO;
+import com.example.demo.DTO.IngredIdDTO;
 import com.example.demo.DTOHAV.IngredDTOCOM;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,8 @@ public class IngredService {
     }
 
     public boolean insert(IngredDTO resDTO) throws SQLException {
+        PreparedStatement preparedStatemen = DriverManager.getConnection(connectionString).prepareStatement("SELECT * FROM Ingredient");
+        System.out.println(preparedStatemen);
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insert_into_ingre @IngreName=?, @IngreType=?");
         preparedStatement.setString(1,resDTO.getName());
         preparedStatement.setString(2,resDTO.getType());
@@ -39,9 +42,14 @@ public class IngredService {
         preparedStatement.setString(3,ingredDTO.getType());
         return preparedStatement.execute();
     }
-    public boolean delete(IngredDTOCOM ingredDTO) throws SQLException {
+    public boolean delete(IngredIdDTO ingredDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec delete_ingre @IngreId=? @IngreName=?, @IngreType=?");
-        preparedStatement.setInt(1,ingredDTO.getId());
+        preparedStatement.setInt(1,ingredDTO.getIngreId());
+        return preparedStatement.execute();
+    }
+    public boolean tableify() throws SQLException {
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * FROM Ingredient");
+        System.out.println(preparedStatement);
         return preparedStatement.execute();
     }
 }
