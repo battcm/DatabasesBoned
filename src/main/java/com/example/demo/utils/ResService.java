@@ -131,6 +131,7 @@ public class ResService {
                         return "?";
                     }
                 })
+
                 .collect(Collectors.toList());
         List json = DSL.using(dbConnection)
                 .fetch(resultSet)
