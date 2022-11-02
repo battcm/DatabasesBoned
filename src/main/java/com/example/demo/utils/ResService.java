@@ -25,39 +25,41 @@ public class ResService {
     Properties application = new Properties();
 
 
-    public ResService(){
+    public ResService() {
         try {
             application.load(new FileInputStream("src/main/resources/application.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        connectionString= String.format(application.getProperty("databaseConnection"),application.getProperty("serverName"),application.getProperty("spring.datasource.databaseName"),application.getProperty("username"),application.getProperty("password"));
+        connectionString = String.format(application.getProperty("databaseConnection"), application.getProperty("serverName"), application.getProperty("spring.datasource.databaseName"), application.getProperty("username"), application.getProperty("password"));
     }
 
     public boolean insert(ResDTO resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec insertRest @name=?, @addr=?");
-        preparedStatement.setString(1,resDTO.getName());
-        preparedStatement.setString(2,resDTO.getAddr());
+        preparedStatement.setString(1, resDTO.getName());
+        preparedStatement.setString(2, resDTO.getAddr());
         return preparedStatement.execute();
     }
+
     public boolean update(ResDTOCOM resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @name=?, @addr=?, @id=?");
-        preparedStatement.setString(1,resDTO.getName());
-        preparedStatement.setString(2,resDTO.getAddr());
-        preparedStatement.setInt(3,resDTO.getId());
+        preparedStatement.setString(1, resDTO.getName());
+        preparedStatement.setString(2, resDTO.getAddr());
+        preparedStatement.setInt(3, resDTO.getId());
         return preparedStatement.execute();
     }
 
     public boolean delete(ResIdDTO resDTO) throws SQLException {
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec updateRest @id='?'");
-        preparedStatement.setInt(1,resDTO.getRestId());
+        preparedStatement.setInt(1, resDTO.getRestId());
         return preparedStatement.execute();
     }
+
     public JSONArray selectAll() throws SQLException {
-        Connection dbConnection=DriverManager.getConnection(connectionString);
+        Connection dbConnection = DriverManager.getConnection(connectionString);
         PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * from Restaurant");
 
-        ResultSet resultSet= preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
@@ -84,10 +86,11 @@ public class ResService {
         return new JSONArray(json);
 
     }
-    public JSONArray selectRestName() throws SQLException{
-        Connection dbConnection=DriverManager.getConnection(connectionString);
+
+    public JSONArray selectRestName() throws SQLException {
+        Connection dbConnection = DriverManager.getConnection(connectionString);
         PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec selectRestName");
-        ResultSet resultSet= preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
@@ -113,12 +116,13 @@ public class ResService {
                 });
         return new JSONArray(json);
     }
-    public JSONArray selectApp(Date dateTime,String rest ) throws SQLException{
-        Connection dbConnection=DriverManager.getConnection(connectionString);
+
+    public JSONArray selectApp(Date dateTime, String rest) throws SQLException {
+        Connection dbConnection = DriverManager.getConnection(connectionString);
         PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec app @day=?, @rest=?");
-        preparedStatement.setDate(1,dateTime);
-        preparedStatement.setString(2,rest);
-        ResultSet resultSet= preparedStatement.executeQuery();
+        preparedStatement.setDate(1, dateTime);
+        preparedStatement.setString(2, rest);
+        ResultSet resultSet = preparedStatement.executeQuery();
         ResultSetMetaData md = resultSet.getMetaData();
         int numCols = md.getColumnCount();
         List<String> colNames = IntStream.range(0, numCols)
@@ -144,4 +148,4 @@ public class ResService {
                 });
         return new JSONArray(json);
     }
-    }
+}

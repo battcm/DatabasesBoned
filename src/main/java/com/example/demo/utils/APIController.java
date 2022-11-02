@@ -2,11 +2,7 @@ package com.example.demo.utils;
 
 import com.example.demo.DTO.*;
 import com.example.demo.DTOHAV.*;
-import org.jooq.Record;
-import org.jooq.RecordMapper;
-import org.jooq.impl.DSL;
 import org.jooq.tools.json.JSONArray;
-import org.jooq.tools.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -14,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
-import java.util.List;
 
 @RestController("com.example.demo.utils.APIController")
 @CrossOrigin(origins = "http://localhost:5000")
@@ -430,14 +425,44 @@ public class APIController {
         }
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
-    @PostMapping("tableify/ingredient")
-    public ResponseEntity<Boolean> tableifyIngredient(){
+    @PostMapping("select/ingredient")
+    public ResponseEntity<JSONArray> selectIngredient(){
         try{
-            return new ResponseEntity<Boolean>(ingredService.tableify(),HttpStatus.OK);
+            return new ResponseEntity<JSONArray>(ingredService.selectIngred(),HttpStatus.OK);
         } catch(SQLException e){
             e.printStackTrace();
         }
-        return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/fooditem")
+    public ResponseEntity<JSONArray> selectFoodItem(){
+        try{
+            return new ResponseEntity<JSONArray>(foodService.selectFood(),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/drink")
+    public ResponseEntity<JSONArray> selectDrink(){
+        try{
+            return new ResponseEntity<JSONArray>(drinkService.selectDrink(),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/restaurant")
+    public ResponseEntity<JSONArray> selectRestaurant(){
+        try{
+            return new ResponseEntity<JSONArray>(resService.selectRest(),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
 
 }
