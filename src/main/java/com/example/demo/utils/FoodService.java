@@ -41,7 +41,7 @@ public class FoodService {
         return preparedStatement.execute();
     }
     public boolean update(FoodDTOCOM foodDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_foodItem @FoodItemID='?', @Name='?', @Calories=?");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec update_foodItem @FoodItemID=?, @Name=?, @Calories=?");
         preparedStatement.setInt(1,Integer.valueOf(foodDTO.getId()));
         preparedStatement.setString(2,foodDTO.getName());
         preparedStatement.setInt(3,foodDTO.getCal());
@@ -112,5 +112,37 @@ public class FoodService {
                     }
                 });
         return new JSONArray(json);
+    }
+
+    public JSONArray getTable(String attribute) throws SQLException {
+        Connection dbConnection = DriverManager.getConnection(connectionString);
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * from FoodItems Order By "+attribute);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSetMetaData md = resultSet.getMetaData();
+        int numCols = md.getColumnCount();
+        List<String> colNames = IntStream.range(0, numCols)
+                .mapToObj(i -> {
+                    try {
+                        return md.getColumnName(i + 1);
+                    } catch (SQLException e) {
+
+                        e.printStackTrace();
+                        return "?";
+                    }
+                })
+                .collect(Collectors.toList());
+        List json = DSL.using(dbConnection)
+                .fetch(resultSet)
+                .map(new RecordMapper() {
+                    @Override
+                    public JSONObject map(Record r) {
+                        JSONObject obj = new JSONObject();
+                        colNames.forEach(cn -> obj.put(cn, r.get(cn)));
+                        return obj;
+                    }
+                });
+        return new JSONArray(json);
+
     }
 }

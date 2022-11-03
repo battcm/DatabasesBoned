@@ -3,15 +3,20 @@ package com.example.demo.utils;
 import com.example.demo.DTO.SellDTO;
 import com.example.demo.DTO.SellIdDTO;
 import com.example.demo.DTOHAV.SellsDTOCOM;
+import org.jooq.Record;
+import org.jooq.RecordMapper;
+import org.jooq.impl.DSL;
+import org.jooq.tools.json.JSONArray;
+import org.jooq.tools.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service("com.example.demo.utils.SellService")
 public class SellService {
@@ -37,10 +42,10 @@ public class SellService {
         return preparedStatement.execute();
     }
     public boolean update(SellsDTOCOM sellsDTO) throws SQLException {
-        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec UpdateSells @RestID='?', @FoodID='?', @Mealtype='?'");
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("Exec UpdateSells @RestID=?, @FoodID=?, @Mealtype=?");
         preparedStatement.setInt(1,sellsDTO.getResId());
         preparedStatement.setInt(2,sellsDTO.getFoodId());
-        preparedStatement.setString(2,sellsDTO.getMealType());
+        preparedStatement.setString(3,sellsDTO.getMealType());
         return preparedStatement.execute();
     }
 
@@ -49,6 +54,38 @@ public class SellService {
         preparedStatement.setInt(1,sellsDTO.getRestId());
         preparedStatement.setInt(2,sellsDTO.getFoodId());
         return preparedStatement.execute();
+    }
+
+    public JSONArray getTable(String attribute) throws SQLException {
+        Connection dbConnection = DriverManager.getConnection(connectionString);
+        PreparedStatement preparedStatement = DriverManager.getConnection(connectionString).prepareStatement("SELECT * from Sells Order By "+attribute);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSetMetaData md = resultSet.getMetaData();
+        int numCols = md.getColumnCount();
+        List<String> colNames = IntStream.range(0, numCols)
+                .mapToObj(i -> {
+                    try {
+                        return md.getColumnName(i + 1);
+                    } catch (SQLException e) {
+
+                        e.printStackTrace();
+                        return "?";
+                    }
+                })
+                .collect(Collectors.toList());
+        List json = DSL.using(dbConnection)
+                .fetch(resultSet)
+                .map(new RecordMapper() {
+                    @Override
+                    public JSONObject map(Record r) {
+                        JSONObject obj = new JSONObject();
+                        colNames.forEach(cn -> obj.put(cn, r.get(cn)));
+                        return obj;
+                    }
+                });
+        return new JSONArray(json);
+
     }
 }
 

@@ -455,5 +455,94 @@ public class APIController {
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
 
+    @PostMapping("select/res")
+    public ResponseEntity<JSONArray> selectRes(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(resService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/drink")
+    public ResponseEntity<JSONArray> selectDrink(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(drinkService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/food")
+    public ResponseEntity<JSONArray> selectFood(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(foodService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/ingre")
+    public ResponseEntity<JSONArray> selectIngre(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(ingredService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/isIn")
+    public ResponseEntity<JSONArray> selectIsIn(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(isInService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/order")
+    public ResponseEntity<JSONArray> selectOrder(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(orderService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/schedule")
+    public ResponseEntity<JSONArray> selectSchedule(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(scheduleService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/sell")
+    public ResponseEntity<JSONArray> selectSell(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(sellService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+
+    @PostMapping("select/work")
+    public ResponseEntity<JSONArray> selectWorksFor(@RequestBody SortDTO sortDTO){
+        try{
+            return new ResponseEntity<JSONArray>(workService.getTable(sortDTO.getCol()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
 }
 
