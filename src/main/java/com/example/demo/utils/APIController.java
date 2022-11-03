@@ -435,35 +435,6 @@ public class APIController {
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
 
-    @PostMapping("select/fooditem")
-    public ResponseEntity<JSONArray> selectFoodItem(){
-        try{
-            return new ResponseEntity<JSONArray>(foodService.selectFood(),HttpStatus.OK);
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
-    }
-
-    @PostMapping("select/drink")
-    public ResponseEntity<JSONArray> selectDrink(){
-        try{
-            return new ResponseEntity<JSONArray>(drinkService.selectDrink(),HttpStatus.OK);
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
-    }
-
-    @PostMapping("select/restaurant")
-    public ResponseEntity<JSONArray> selectRestaurant(){
-        try{
-            return new ResponseEntity<JSONArray>(resService.selectRest(),HttpStatus.OK);
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
-    }
     @PostMapping("select/meal")
     public ResponseEntity<JSONArray> selectMeal(@RequestBody MealDTO mealDTO){
         try{
@@ -473,6 +444,7 @@ public class APIController {
         }
         return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
     }
+
     @PostMapping("select/mealing")
     public ResponseEntity<JSONArray> selectMealING(@RequestBody MealDTO mealDTO){
         try{
