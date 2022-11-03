@@ -79,6 +79,7 @@ const userAction = async () => {
           <th>RestID	</th>
           <th>RestName	</th>
           <th>RestAddress	</th>
+		  <th>Food Items ID	</th>
           <th>Food Name	</th>
 		  <th>Food Calories	</th>
 		  <th>Drink ID	</th>
@@ -95,6 +96,7 @@ const userAction = async () => {
 			<td>${r.RestId} </td>
 			<td>${r.RestName}</td>
 			<td>${r.RestAddress}</td> 
+			<td>${r.FoodItemsID}</td> 
 			<td>${r.Name}</td> 
 			<td>${r.Calories}</td> 
 			<td>${r.DrinkID}</td> 
