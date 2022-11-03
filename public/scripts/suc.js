@@ -56,6 +56,8 @@ rhit.main = function () {
                 location.href="FoodItems.html";		}
          document.querySelector("#app").onclick=(event)=>{
                  location.href="app.html";		}
+         document.querySelector("#help").onclick=(event)=>{
+                location.href="help.html";		}
 	}
 
 
