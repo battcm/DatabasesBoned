@@ -56,11 +56,47 @@ rhit.main = function () {
 			)};
 			
 		  userAction();
+		  getTable();
 		}
 
 		
 	
-	
+	document.querySelector("#apply").onclick = (event)=>{
+            getTable();
+        }
+
+        const getTable = async () => {
+            const obj={col: document.querySelector('#select').value};
+            console.log(obj);
+            const response = await fetch(' http://localhost:8080/v1/select/isIn', {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+             });
+            if( response.status==200){
+                const data=await response.json();
+                console.log(data);
+                let tab =
+                `<tr>
+                  <th>FoodID	</th>
+                  <th>IngredientID	</th>
+                 </tr>`;
+                for (let r of Object.values(data)) {
+                    tab += `<tr>
+                    <td>${r.FoodID} </td>
+                    <td>${r.IngredientID}</td>
+                </tr>`;
+                        }
+                document.querySelector('#dataTable').innerHTML=(tab);
+
+            }else{
+                // location.href="fail.html";
+            }
+
+        }
+        getTable();
 		 
 	}
 

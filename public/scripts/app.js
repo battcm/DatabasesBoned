@@ -1,31 +1,4 @@
-/**
- * @fileoverview
- * Provides the JavaScript interactions for all pages.
- *
- * @author 
- * PUT_YOUR_NAME_HERE
- */
-
-/** namespace. */
 var rhit = rhit || {};
-
-/** globals */
-rhit.variableName = "";
-
-/** function and class syntax examples */
-rhit.functionName = function () {
-	/** function body */
-};
-
-rhit.ClassName = class {
-	constructor() {
-
-	}
-
-	methodName() {
-
-	}
-}
 
 /* Main */
 /** function and class syntax examples */
@@ -70,53 +43,53 @@ const userAction = async () => {
 			headers: {
 			  'Content-Type': 'application/json'
 			}
-		  });
-	if( response.status==200){
-		const data=await response.json();
-		console.log(data);
-		let tab = 
-        `<tr>
-          <th>RestID	</th>
-          <th>RestName	</th>
-          <th>RestAddress	</th>
-		  <th>Food Items ID	</th>
-          <th>Food Name	</th>
-		  <th>Food Calories	</th>
-		  <th>Drink ID	</th>
-		  <th>Drink Name	</th>
-		  <th>Drink Brand	</th>
-		  <th>Drink Price	</th>
-		  <th>Food Date Recieved	</th>
-		  <th>Quantity	</th>
-		  <th>Storage Type	</th>
-         </tr>`;
-		for (let r of Object.values(data)) {
-			r.DateRecieved=r.DateRecieved.slice(0,10);
-			tab += `<tr> 
-			<td>${r.RestId} </td>
-			<td>${r.RestName}</td>
-			<td>${r.RestAddress}</td> 
-			<td>${r.FoodItemsID}</td> 
-			<td>${r.Name}</td> 
-			<td>${r.Calories}</td> 
-			<td>${r.DrinkID}</td> 
-			<td>${r.DrinkName}</td> 
-			<td>${r.DrinkBrand}</td> 
-			<td>${r.DrinkPrice}</td> 
-			<td>${r.DateRecieved}</td> 
-			<td>${r.Quantity}</td> 
-			<td>${r.StorageType}</td> 
-		</tr>`;
-				}
-		document.querySelector('#restDay').innerHTML=(tab);
+		 });
+        if( response.status==200){
+            const data=await response.json();
+            console.log(data);
+            let tab =
+            `<tr>
+              <th>RestID	</th>
+              <th>RestName	</th>
+              <th>RestAddress	</th>
+              <th>Food Items ID	</th>
+              <th>Food Name	</th>
+              <th>Food Calories	</th>
+              <th>Drink ID	</th>
+              <th>Drink Name	</th>
+              <th>Drink Brand	</th>
+              <th>Drink Price	</th>
+              <th>Food Date Recieved	</th>
+              <th>Quantity	</th>
+              <th>Storage Type	</th>
+             </tr>`;
+            for (let r of Object.values(data)) {
+                r.DateRecieved=r.DateRecieved.slice(0,10);
+                tab += `<tr>
+                <td>${r.RestId} </td>
+                <td>${r.RestName}</td>
+                <td>${r.RestAddress}</td>
+                <td>${r.FoodItemsID}</td>
+                <td>${r.Name}</td>
+                <td>${r.Calories}</td>
+                <td>${r.DrinkID}</td>
+                <td>${r.DrinkName}</td>
+                <td>${r.DrinkBrand}</td>
+                <td>${r.DrinkPrice}</td>
+                <td>${r.DateRecieved}</td>
+                <td>${r.Quantity}</td>
+                <td>${r.StorageType}</td>
+            </tr>`;
+                    }
+            document.querySelector('#restDay').innerHTML=(tab);
 
-	}else{
-		// location.href="fail.html";
-	}
+        }else{
+            // location.href="fail.html";
+        }
 
-	}
-	userSub();
-}
+	    }
+	    userSub();
+    }
 
 
 	
@@ -124,7 +97,7 @@ const userAction = async () => {
 	userAction();
 
     
-	}
+}
 
 
 rhit.main();

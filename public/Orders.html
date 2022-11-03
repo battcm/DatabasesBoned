@@ -13,81 +13,156 @@
 <body>
   <nav class="navbar navbar-dark fixed-top">
     <a class="navbar-brand" href="#">Orders</a>
+    <div class="dropdown pull-xs-right">
+      <button
+              class="btn bmd-btn-icon dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true">
+        <i class="material-icons">more_vert</i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton" style="left: -128px">
+        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#editDialog"><i class="material-icons">edit</i>&nbsp;&nbsp;&nbsp;Edit</button>
+        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#deleteDialog"><i class="material-icons">delete</i>&nbsp;&nbsp;&nbsp;Delete</button>
+        <button class="dropdown-item" type="button" data-toggle="modal" data-target="#addDialog"><i class="material-icons">add</i>&nbsp;&nbsp;&nbsp;Add</button>
+      </div>
+    </div>
   </nav>
+
   <div id="mainPage" class="container page-container">
-    <div id="mainPage" class="container page-container">
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputResId" class="bmd-label-floating">Restraunt ID</label>
-        <input type="email" class="form-control" id="inputResId" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputFoodId" class="bmd-label-floating">Food ID</label>
-        <input type="email" class="form-control" id="inputFoodId" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputDrinkId" class="bmd-label-floating">Drink ID</label>
-        <input type="email" class="form-control" id="inputDrinkId" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputDate" class="bmd-label-floating">Date</label>
-        <input type="email" class="form-control" id="inputDate" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputQuan" class="bmd-label-floating">Quantity</label>
-        <input type="email" class="form-control" id="inputQuan" name ="Day">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="inputStor" class="bmd-label-floating">Type</label>
-        <input type="email" class="form-control" id="inputStor" name ="password">
-      </div>
-      <button id="Submit" type="button" class="btn btn-primary btn-outline">Submit</button>
-      <hr>
+    <p> Order by:
+      <select id="select">
+        <option value="RestId">RestId</option>'
+        <option value="FoodItemsID">FoodItemsID</option>'
+        <option value="DrinkID">DrinkID</option>'
+        <option value="DateRecieved">DateRecieved</option>'
+        <option value="Quantity">Quantity</option>'
+        <option value="StorageType">StorageType</option>'
+      </select>
+    </p>
+    <button id="apply" type="button" class="btn btn-primary btn-outline">Apply</button>
+    <hr>
 
+    <table id="dataTable"></table>
 
-
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="deleteResId" class="bmd-label-floating">Restraunt ID</label>
-        <input type="email" class="form-control" id="deleteResId" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="deleteFoodId" class="bmd-label-floating">Food ID</label>
-        <input type="email" class="form-control" id="deleteFoodId" name="email">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="deleteDrinkId" class="bmd-label-floating">Drink ID</label>
-        <input type="email" class="form-control" id="deleteDrinkId" name="email">
-      </div>
-      <button id="Delete" type="button" class="btn btn-primary btn-outline">Delete</button>
-      <hr>
-
-
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateResId" class="bmd-label-floating">Restraunt ID</label>
-        <input type="email" class="form-control" id="updateResId">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateFoodId" class="bmd-label-floating">Food ID</label>
-        <input type="email" class="form-control" id="updateFoodId">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateDrinkId" class="bmd-label-floating">Drink ID</label>
-        <input type="email" class="form-control" id="updateDrinkId">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateDate" class="bmd-label-floating">Date</label>
-        <input type="email" class="form-control" id="updateDate">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateQuan" class="bmd-label-floating">Quantity</label>
-        <input type="email" class="form-control" id="updateQuan">
-      </div>
-      <div class="form-group bmd-form-group" form action="login.php" method="post">
-        <label for="updateType" class="bmd-label-floating">Type</label>
-        <input type="email" class="form-control" id="updateType"  >
-      </div>
-      <button id="Update" type="button" class="btn btn-primary btn-outline">Update</button>
-      <hr>
   </div>
+
+  <div class="modal fade" id="addDialog" tabindex="-1" role="dialog" aria-labelledby="Add dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Data</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputResId" class="bmd-label-floating">Restraunt ID</label>
+            <input type="email" class="form-control" id="inputResId" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputFoodId" class="bmd-label-floating">Food ID</label>
+            <input type="email" class="form-control" id="inputFoodId" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputDrinkId" class="bmd-label-floating">Drink ID</label>
+            <input type="email" class="form-control" id="inputDrinkId" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputDate" class="bmd-label-floating">Date</label>
+            <input type="email" class="form-control" id="inputDate" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputQuan" class="bmd-label-floating">Quantity</label>
+            <input type="email" class="form-control" id="inputQuan" name ="Day">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="inputStor" class="bmd-label-floating">Type</label>
+            <input type="email" class="form-control" id="inputStor" name ="password">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="Submit" type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editDialog" tabindex="-1" role="dialog" aria-labelledby="Edit dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Data</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateResId" class="bmd-label-floating">Restraunt ID</label>
+            <input type="email" class="form-control" id="updateResId">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateFoodId" class="bmd-label-floating">Food ID</label>
+            <input type="email" class="form-control" id="updateFoodId">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateDrinkId" class="bmd-label-floating">Drink ID</label>
+            <input type="email" class="form-control" id="updateDrinkId">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateDate" class="bmd-label-floating">Date</label>
+            <input type="email" class="form-control" id="updateDate">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateQuan" class="bmd-label-floating">Quantity</label>
+            <input type="email" class="form-control" id="updateQuan">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="updateType" class="bmd-label-floating">Type</label>
+            <input type="email" class="form-control" id="updateType"  >
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="Update" type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="Delete dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Data</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="deleteResId" class="bmd-label-floating">Restraunt ID</label>
+            <input type="email" class="form-control" id="deleteResId" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="deleteFoodId" class="bmd-label-floating">Food ID</label>
+            <input type="email" class="form-control" id="deleteFoodId" name="email">
+          </div>
+          <div class="form-group bmd-form-group" form action="login.php" method="post">
+            <label for="deleteDrinkId" class="bmd-label-floating">Drink ID</label>
+            <input type="email" class="form-control" id="deleteDrinkId" name="email">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="Delete" type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/popper.js"></script>
   <script src="scripts/bootstrap-material-design.js"></script>

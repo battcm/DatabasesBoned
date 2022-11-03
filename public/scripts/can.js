@@ -50,16 +50,49 @@ rhit.main = function () {
 				inputEmailEl.innerHTML='';
                 inputPasswordEl.innerHTML='';
 			}else{
-				location.href="fail.html";
+				//location.href="fail.html";
 			}
 		}
 			)};
 			
 		  userAction();
+		  getTable();
 		}
 
 		
-	
+
+const getTable = async () => {
+        const obj={col: "IngredientAID"};
+        console.log(obj);
+        const response = await fetch(' http://localhost:8080/v1/select/can', {
+            method: 'POST',
+            body: JSON.stringify(obj),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+         });
+        if( response.status==200){
+            const data=await response.json();
+            console.log(data);
+            let tab =
+            `<tr>
+              <th>IngredientAID	</th>
+              <th>IngredientBID	</th>
+             </tr>`;
+            for (let r of Object.values(data)) {
+                tab += `<tr>
+                <td>${r.IngredientAID} </td>
+                <td>${r.IngredientBID}</td>
+            </tr>`;
+                    }
+            document.querySelector('#dataTable').innerHTML=(tab);
+
+        }else{
+            // location.href="fail.html";
+        }
+
+    }
+    getTable();
 	
 		 
 	}

@@ -57,6 +57,7 @@ rhit.main = function () {
 			)};
 			
 		  userAction();
+		  getTable();
 		}
 
     document.querySelector("#Update").onclick = (event) => {
@@ -81,8 +82,48 @@ rhit.main = function () {
             )};
 
           userAction();
+          getTable();
         }
-		 
+
+
+    document.querySelector("#apply").onclick = (event)=>{
+            getTable();
+        }
+
+        const getTable = async () => {
+            const obj={col: document.querySelector('#select').value};
+            console.log(obj);
+            const response = await fetch(' http://localhost:8080/v1/select/food', {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+             });
+            if( response.status==200){
+                const data=await response.json();
+                console.log(data);
+                let tab =
+                `<tr>
+                  <th>FoodItemsID	</th>
+                  <th>Name	</th>
+                  <th>Calories	</th>
+                 </tr>`;
+                for (let r of Object.values(data)) {
+                    tab += `<tr>
+                    <td>${r.FoodItemsID} </td>
+                    <td>${r.Name}</td>
+                    <td>${r.Calories}</td>
+                </tr>`;
+                        }
+                document.querySelector('#dataTable').innerHTML=(tab);
+
+            }else{
+                // location.href="fail.html";
+            }
+
+        }
+        getTable();
 	}
 
 

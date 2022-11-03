@@ -57,6 +57,7 @@ rhit.res = function () {
 			)};
 			
 		  userAction();
+		  getTable();
 		}
 
 		
@@ -82,9 +83,48 @@ rhit.res = function () {
             )};
 
           userAction();
+          getTable();
+    }
+
+    document.querySelector("#apply").onclick = (event)=>{
+            getTable();
         }
-		 
-	}
+
+        const getTable = async () => {
+            const obj={col: document.querySelector('#select').value};
+            console.log(obj);
+            const response = await fetch(' http://localhost:8080/v1/select/sell', {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+             });
+            if( response.status==200){
+                const data=await response.json();
+                console.log(data);
+                let tab =
+                `<tr>
+                  <th>RestId	</th>
+                  <th>FoodID	</th>
+                  <th>Mealtype	</th>
+                 </tr>`;
+                for (let r of Object.values(data)) {
+                    tab += `<tr>
+                    <td>${r.RestId} </td>
+                    <td>${r.FoodID}</td>
+                    <td>${r.Mealtype}</td>
+                </tr>`;
+                        }
+                document.querySelector('#dataTable').innerHTML=(tab);
+
+            }else{
+                // location.href="fail.html";
+            }
+
+        }
+        getTable();
+}
 
 
 rhit.res();
