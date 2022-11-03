@@ -131,7 +131,6 @@ public class ResService {
                         return "?";
                     }
                 })
-
                 .collect(Collectors.toList());
         List json = DSL.using(dbConnection)
                 .fetch(resultSet)
@@ -145,4 +144,34 @@ public class ResService {
                 });
         return new JSONArray(json);
     }
+    public JSONArray selectMeal(String rest ) throws SQLException{
+        Connection dbConnection=DriverManager.getConnection(connectionString);
+        PreparedStatement preparedStatement = dbConnection.prepareStatement("Exec getRestMeal @rest=?",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setString(1,rest);
+        ResultSet resultSet= preparedStatement.executeQuery();
+        ResultSetMetaData md = resultSet.getMetaData();
+        int numCols = md.getColumnCount();
+        List<String> colNames = IntStream.range(0, numCols)
+                .mapToObj(i -> {
+                    try {
+                        return md.getColumnName(i + 1);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        return "?";
+                    }
+                })
+                .collect(Collectors.toList());
+        List json = DSL.using(dbConnection)
+                .fetch(resultSet)
+                .map(new RecordMapper() {
+                    @Override
+                    public JSONObject map(Record r) {
+                        JSONObject obj = new JSONObject();
+                        colNames.forEach(cn -> obj.put(cn, r.get(cn)));
+                        return obj;
+                    }
+                });
+        return new JSONArray(json);
+    }
+
     }

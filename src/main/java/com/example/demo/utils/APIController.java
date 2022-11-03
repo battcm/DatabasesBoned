@@ -439,6 +439,24 @@ public class APIController {
         }
         return new ResponseEntity<>(true,HttpStatus.FAILED_DEPENDENCY);
     }
+    @PostMapping("select/meal")
+    public ResponseEntity<JSONArray> selectMeal(@RequestBody MealDTO mealDTO){
+        try{
+            return new ResponseEntity<JSONArray>(resService.selectMeal(mealDTO.getRestName()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
+    @PostMapping("select/mealing")
+    public ResponseEntity<JSONArray> selectMealING(@RequestBody MealDTO mealDTO){
+        try{
+            return new ResponseEntity<JSONArray>(foodService.selectIng(mealDTO.getRestName()),HttpStatus.OK);
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null,HttpStatus.FAILED_DEPENDENCY);
+    }
 
 }
 
